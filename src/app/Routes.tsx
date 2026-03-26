@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { CurrenciesPage, HomePage, LoginPage } from '../pages';
+import { CurrenciesPage, HomePage, LoginPage } from '@app/pages';
 
 export const AppRouter = () => (
   <BrowserRouter>

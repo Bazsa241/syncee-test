@@ -5,18 +5,17 @@ import { useState } from 'react';
 import { Footer, Form, LoginContainer, PageWrapper, PictureContainer } from './LoginPage.styled';
 import { GoogleLoginButton } from './components';
 import { CompanyLogo } from './components/CompanyLogo';
+import { useLogin } from '@app/features/auth';
 
 export const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const { handleGoogleLogin } = useLogin();
+
   const handleSubmit = (e: React.SubmitEvent) => {
     e.preventDefault();
     console.log('Login', { email, password });
-  };
-
-  const handleGoogle = () => {
-    console.log('Google', { email, password });
   };
 
   return (
@@ -28,11 +27,10 @@ export const LoginPage = () => {
           See your growth and get consulting support!
         </Text>
         <Form onSubmit={handleSubmit}>
-          <GoogleLoginButton type="button" onClick={handleGoogle} />
+          <GoogleLoginButton type="button" onClick={handleGoogleLogin} />
           <Divider>or Sign in with Email</Divider>
           <Input
             label="Email*"
-            error="This field is required"
             type="email"
             placeholder="mail@website.com"
             value={email}

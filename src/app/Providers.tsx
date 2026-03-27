@@ -1,6 +1,7 @@
 import { ThemeProvider } from 'styled-components';
 import { theme } from '@app/styles/theme';
 import { GlobalStyles } from '@app/styles/GlobalStyles';
+import { AuthProvider } from '@app/features/auth';
 
 type ProvidersProps = {
   children: React.ReactNode;
@@ -9,6 +10,6 @@ type ProvidersProps = {
 export const Providers = ({ children }: ProvidersProps) => (
   <ThemeProvider theme={theme}>
     <GlobalStyles />
-    {children}
+    <AuthProvider>{children}</AuthProvider>
   </ThemeProvider>
 );

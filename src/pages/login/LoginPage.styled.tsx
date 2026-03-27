@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-
 import loginImage from '@app/assets/syncee_frontend_test_wallpaper.png';
 
 export const PageWrapper = styled.div`
@@ -29,6 +28,7 @@ export const Form = styled.form`
   flex-direction: column;
   gap: 1rem;
   width: 400px;
+  margin-top: 2rem;
 `;
 
 export const PictureContainer = styled.div`

@@ -1,18 +1,18 @@
 import { getColor } from '@app/styles/utils';
 import styled, { css } from 'styled-components';
 
-type TextVariant = 'default' | 'subtitle' | 'helper' | 'footer';
+type TextVariant = 'subtitle' | 'helper' | 'footer';
 
 interface TextProps {
-  variant?: TextVariant;
+  $variant?: TextVariant;
 }
 
 export const Text = styled.p<TextProps>`
   color: ${getColor('text')};
   font-size: 16px;
 
-  ${({ variant = 'default', theme }) => {
-    switch (variant) {
+  ${({ $variant, theme }) => {
+    switch ($variant) {
       case 'subtitle':
         return css`
           color: ${theme.colors.textSecondary};
@@ -28,9 +28,6 @@ export const Text = styled.p<TextProps>`
           font-size: 14px;
           color: ${theme.colors.textSecondary};
         `;
-
-      default:
-        return;
     }
   }}
 `;

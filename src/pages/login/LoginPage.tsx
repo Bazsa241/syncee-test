@@ -3,6 +3,7 @@ import { Checkbox, Divider, Input, Link, Text } from '@app/components/ui';
 import { Button } from '@app/components/ui/Button';
 import { useState } from 'react';
 import { Footer, Form, LoginContainer, PageWrapper, PictureContainer } from './LoginPage.styled';
+import { GoogleLoginButton } from './components';
 
 export const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -13,14 +14,19 @@ export const LoginPage = () => {
     console.log('Login', { email, password });
   };
 
+  const handleGoogle = () => {
+    console.log('Google', { email, password });
+  };
+
   return (
     <PageWrapper>
       <LoginContainer>
         <h1>Login</h1>
-        <Text variant="subtitle" className="subTitle">
+        <Text $variant="subtitle" className="subTitle">
           See your growth and get consulting support!
         </Text>
         <Form onSubmit={handleSubmit}>
+          <GoogleLoginButton type="button" onClick={handleGoogle} />
           <Divider>or Sign in with Email</Divider>
           <Input
             label="Email*"
@@ -45,12 +51,12 @@ export const LoginPage = () => {
           </Row>
           <Button type="submit">Login</Button>
           <Row $gap={0.25}>
-            <Text variant="helper">Not registered yet?</Text>
+            <Text $variant="helper">Not registered yet?</Text>
             <Link to="#">Create an Account</Link>
           </Row>
         </Form>
         <Footer>
-          <Text variant="footer">2022 Syncee, All rights reserved.</Text>
+          <Text $variant="footer">2022 Syncee, All rights reserved.</Text>
         </Footer>
       </LoginContainer>
       <PictureContainer />

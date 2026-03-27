@@ -21,6 +21,14 @@ export const LoginContainer = styled.div`
   .subTitle {
     width: 100%;
   }
+
+  h1 {
+    margin-top: 2rem;
+  }
+
+  .companyLogo {
+    align-self: flex-start;
+  }
 `;
 
 export const Form = styled.form`

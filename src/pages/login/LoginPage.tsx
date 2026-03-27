@@ -4,6 +4,7 @@ import { Button } from '@app/components/ui/Button';
 import { useState } from 'react';
 import { Footer, Form, LoginContainer, PageWrapper, PictureContainer } from './LoginPage.styled';
 import { GoogleLoginButton } from './components';
+import { CompanyLogo } from './components/CompanyLogo';
 
 export const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -21,6 +22,7 @@ export const LoginPage = () => {
   return (
     <PageWrapper>
       <LoginContainer>
+        <CompanyLogo className="companyLogo" />
         <h1>Login</h1>
         <Text $variant="subtitle" className="subTitle">
           See your growth and get consulting support!

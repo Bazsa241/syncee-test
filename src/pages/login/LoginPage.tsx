@@ -1,4 +1,5 @@
-import { Divider, Input } from '@app/components/ui';
+import { Row } from '@app/components/layout';
+import { Checkbox, Divider, Input, Link } from '@app/components/ui';
 import { Button } from '@app/components/ui/Button';
 import { useState } from 'react';
 import styled from 'styled-components';
@@ -14,6 +15,7 @@ const LoginWrapper = styled.div`
 const Form = styled.form`
   display: flex;
   flex-direction: column;
+  gap: 1rem;
   width: 300px;
 `;
 
@@ -33,6 +35,7 @@ export const LoginPage = () => {
         <Divider>or Sign in with Email</Divider>
         <Input
           label="Email*"
+          error="This field is required"
           type="email"
           placeholder="mail@website.com"
           value={email}
@@ -47,7 +50,14 @@ export const LoginPage = () => {
           onChange={(e) => setPassword(e.target.value)}
           autoComplete="current-password"
         />
+        <Row $justify="between">
+          <Checkbox label="Remember me" />
+          <Link to="#">Forget password?</Link>
+        </Row>
         <Button type="submit">Login</Button>
+        <Row>
+          <Link to="#">Create an Account</Link>
+        </Row>
       </Form>
     </LoginWrapper>
   );

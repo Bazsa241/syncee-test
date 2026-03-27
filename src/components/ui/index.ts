@@ -1,3 +1,5 @@
 export { Input } from './Input';
 export { Button } from './Button';
 export { Divider } from './Divider';
+export { Checkbox } from './Checkbox';
+export { Link } from './Link';

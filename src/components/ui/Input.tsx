@@ -9,6 +9,7 @@ const StyledInput = styled.input<ErrorProp>`
   border-radius: ${({ theme }) => theme.radius.pill};
   color: ${({ theme, $error }) => ($error ? theme.colors.error : theme.colors.text)};
   padding: 1rem 1.5rem;
+  margin-top: 0.5rem;
   width: 100%;
 
   &::placeholder {
@@ -36,12 +37,6 @@ const Error = styled.small<ErrorProp>`
   visibility: ${({ $error }) => ($error ? 'visible' : 'hidden')};
 `;
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-`;
-
 type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   label: string;
   error?: string;
@@ -49,14 +44,14 @@ type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
 
 export const Input = ({ label, error, name, id, ...props }: InputProps) => {
   const autoId = useId();
-  const inputId = id || name || autoId;
+  const inputId = id ?? name ?? autoId;
   const hasError = Boolean(error);
 
   return (
-    <Wrapper>
+    <div>
       <Label htmlFor={inputId}>{label}</Label>
       <StyledInput $error={hasError} id={inputId} name={name || label?.toLowerCase()} {...props} />
       <Error $error={hasError}>{error}</Error>
-    </Wrapper>
+    </div>
   );
 };

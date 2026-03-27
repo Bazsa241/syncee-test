@@ -1,23 +1,8 @@
 import { Row } from '@app/components/layout';
-import { Checkbox, Divider, Input, Link } from '@app/components/ui';
+import { Checkbox, Divider, Input, Link, Text } from '@app/components/ui';
 import { Button } from '@app/components/ui/Button';
 import { useState } from 'react';
-import styled from 'styled-components';
-
-const LoginWrapper = styled.div`
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 100vh;
-`;
-
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  width: 300px;
-`;
+import { Footer, Form, LoginContainer, PageWrapper, PictureContainer } from './LoginPage.styled';
 
 export const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -29,36 +14,46 @@ export const LoginPage = () => {
   };
 
   return (
-    <LoginWrapper>
-      <h1>Login</h1>
-      <Form onSubmit={handleSubmit}>
-        <Divider>or Sign in with Email</Divider>
-        <Input
-          label="Email*"
-          error="This field is required"
-          type="email"
-          placeholder="mail@website.com"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          autoComplete="username"
-        />
-        <Input
-          label="Password*"
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          autoComplete="current-password"
-        />
-        <Row $justify="between">
-          <Checkbox label="Remember me" />
-          <Link to="#">Forget password?</Link>
-        </Row>
-        <Button type="submit">Login</Button>
-        <Row>
-          <Link to="#">Create an Account</Link>
-        </Row>
-      </Form>
-    </LoginWrapper>
+    <PageWrapper>
+      <LoginContainer>
+        <h1>Login</h1>
+        <Text variant="subtitle" className="subTitle">
+          See your growth and get consulting support!
+        </Text>
+        <Form onSubmit={handleSubmit}>
+          <Divider>or Sign in with Email</Divider>
+          <Input
+            label="Email*"
+            error="This field is required"
+            type="email"
+            placeholder="mail@website.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            autoComplete="username"
+          />
+          <Input
+            label="Password*"
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            autoComplete="current-password"
+          />
+          <Row $justify="between">
+            <Checkbox label="Remember me" />
+            <Link to="#">Forget password?</Link>
+          </Row>
+          <Button type="submit">Login</Button>
+          <Row $gap={0.25}>
+            <Text variant="helper">Not registered yet?</Text>
+            <Link to="#">Create an Account</Link>
+          </Row>
+        </Form>
+        <Footer>
+          <Text variant="footer">2022 Syncee, All rights reserved.</Text>
+        </Footer>
+      </LoginContainer>
+      <PictureContainer />
+    </PageWrapper>
   );
 };

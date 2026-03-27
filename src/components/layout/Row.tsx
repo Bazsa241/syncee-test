@@ -13,10 +13,12 @@ const justifyMap: Record<Justify, string> = {
 
 type RowProps = {
   $justify?: Justify;
+  $gap?: number;
 };
 
 export const Row = styled.div<RowProps>`
   align-items: center;
   display: flex;
   justify-content: ${({ $justify }) => ($justify ? justifyMap[$justify] : justifyMap.start)};
+  gap: ${({ $gap }) => $gap ?? 0}rem;
 `;

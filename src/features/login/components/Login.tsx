@@ -10,7 +10,7 @@ export const Login = () => {
 
   return (
     <Form onSubmit={handleSubmit} noValidate>
-      <GoogleLoginButton type="button" onClick={() => handleGoogleLogin(formState.remember)} />
+      <GoogleLoginButton type="button" onClick={handleGoogleLogin} />
       <Divider>or Sign in with Email</Divider>
       {loading && (
         <Center>

@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { FirebaseError } from 'firebase/app';
 import {
   setPersistence,
@@ -16,8 +15,6 @@ export const useRegister = () => {
 
   const { loading: googleLoading, error: googleError, handleGoogleAuth } = useGoogleAuth();
 
-  const navigate = useNavigate();
-
   const handleEmailRegister = async ({ email, password }: RegisterInput) => {
     setLoading(true);
     setError(null);
@@ -25,7 +22,6 @@ export const useRegister = () => {
     try {
       await setPersistence(auth, browserSessionPersistence);
       await createUserWithEmailAndPassword(auth, email, password);
-      navigate('/');
     } catch (err) {
       const firebaseError = err as FirebaseError;
       setError(firebaseError.message || 'Login failed');

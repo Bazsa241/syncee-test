@@ -13,6 +13,7 @@ const emailSchema = z.email('Please enter a valid email address');
 export const loginSchema = z.object({
   email: emailSchema,
   password: passwordSchema,
+  remember: z.boolean(),
 });
 
 export const registerSchema = z
@@ -21,9 +22,19 @@ export const registerSchema = z
     password: passwordSchema,
     confirmPassword: z.string(),
   })
-  .refine((data) => data.password === data.confirmPassword, {
-    message: 'Passwords must match',
-    path: ['confirmPassword'],
+  .superRefine((data, ctx) => {
+    if (data.password !== data.confirmPassword) {
+      ctx.addIssue({
+        code: 'custom',
+        message: 'Passwords must match',
+        path: ['confirmPassword'],
+      });
+      ctx.addIssue({
+        code: 'custom',
+        message: 'Passwords must match',
+        path: ['password'],
+      });
+    }
   });
 
 export type LoginInput = z.infer<typeof loginSchema>;

@@ -1,11 +1,11 @@
 import { Navigate, Outlet } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
-import { Loading } from '@app/components/ui';
+import { PageLoading } from '@app/components/layout';
 
 export const AuthGuard = () => {
   const { user, loading } = useAuth();
 
-  if (loading) return <Loading />;
+  if (loading) return <PageLoading />;
 
   if (!user) return <Navigate to="/login" />;
 

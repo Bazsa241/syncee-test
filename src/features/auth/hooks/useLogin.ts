@@ -5,6 +5,7 @@ import { FirebaseError } from 'firebase/app';
 import { setPersistence, browserLocalPersistence, browserSessionPersistence } from 'firebase/auth';
 import { auth } from '@app/features/auth/api/firebase';
 import { useGoogleAuth } from './useGoogleAuth';
+import type { LoginInput } from '@app/entities/auth';
 
 export const useLogin = () => {
   const [loading, setLoading] = useState(false);
@@ -14,7 +15,7 @@ export const useLogin = () => {
 
   const navigate = useNavigate();
 
-  const handleEmailLogin = async (email: string, password: string, remember: boolean = false) => {
+  const handleEmailLogin = async ({ email, password, remember = false }: LoginInput) => {
     setLoading(true);
     setError(null);
 

@@ -6,14 +6,7 @@ const spin = keyframes`
   100% { transform: rotate(360deg); }
 `;
 
-const FullPage = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-`;
-
-const Spinner = styled.div`
+export const Spinner = styled.div`
   border: 4px solid ${getColor('border')};
   border-top: 4px solid ${getColor('primary')};
   border-radius: 50%;
@@ -21,11 +14,3 @@ const Spinner = styled.div`
   height: 50px;
   animation: ${spin} 1s linear infinite;
 `;
-
-export const Loading = () => {
-  return (
-    <FullPage>
-      <Spinner />
-    </FullPage>
-  );
-};

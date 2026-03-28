@@ -10,12 +10,13 @@ import { useLogin } from '@app/features/auth';
 export const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [remember, setRemember] = useState(true);
 
   const { handleGoogleLogin, loading } = useLogin();
 
   const handleSubmit = (e: React.SubmitEvent) => {
     e.preventDefault();
-    console.log('Login', { email, password });
+    console.log('Login', { email, password, remember });
   };
 
   if (loading) {
@@ -31,7 +32,7 @@ export const LoginPage = () => {
           See your growth and get consulting support!
         </Text>
         <Form onSubmit={handleSubmit}>
-          <GoogleLoginButton type="button" onClick={handleGoogleLogin} />
+          <GoogleLoginButton type="button" onClick={() => handleGoogleLogin(remember)} />
           <Divider>or Sign in with Email</Divider>
           <Input
             label="Email*"
@@ -50,7 +51,11 @@ export const LoginPage = () => {
             autoComplete="current-password"
           />
           <Row $justify="between">
-            <Checkbox label="Remember me" />
+            <Checkbox
+              label="Remember me"
+              checked={remember}
+              onChange={(e) => setRemember(e.target.checked)}
+            />
             <Link to="#">Forget password?</Link>
           </Row>
           <Button type="submit">Login</Button>

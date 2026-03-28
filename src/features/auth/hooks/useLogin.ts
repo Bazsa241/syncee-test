@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { loginWithEmail, signInWithGoogle } from '../utils/authHelpers';
 import { FirebaseError } from 'firebase/app';
+import { setPersistence, browserLocalPersistence, browserSessionPersistence } from 'firebase/auth';
+import { auth } from '@app/features/auth/api/firebase';
 
 export const useLogin = () => {
   const [loading, setLoading] = useState(false);
@@ -9,10 +11,11 @@ export const useLogin = () => {
 
   const navigate = useNavigate();
 
-  const handleEmailLogin = async (email: string, password: string) => {
+  const handleEmailLogin = async (email: string, password: string, remember: boolean = true) => {
     setLoading(true);
     setError(null);
     try {
+      await setPersistence(auth, remember ? browserLocalPersistence : browserSessionPersistence);
       await loginWithEmail(email, password);
       navigate('/');
     } catch (err) {
@@ -23,10 +26,11 @@ export const useLogin = () => {
     }
   };
 
-  const handleGoogleLogin = async () => {
+  const handleGoogleLogin = async (remember: boolean = true) => {
     setLoading(true);
     setError(null);
     try {
+      await setPersistence(auth, remember ? browserLocalPersistence : browserSessionPersistence);
       await signInWithGoogle();
       navigate('/');
     } catch (err) {

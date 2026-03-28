@@ -29,7 +29,7 @@ const Label = styled.label`
   font-size: 14px;
 `;
 
-type CheckboxProps = React.ButtonHTMLAttributes<HTMLInputElement> & {
+type CheckboxProps = React.InputHTMLAttributes<HTMLInputElement> & {
   label: string;
 };
 

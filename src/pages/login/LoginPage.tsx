@@ -1,5 +1,5 @@
 import { Row } from '@app/components/layout';
-import { Checkbox, Divider, Input, Link, Text } from '@app/components/ui';
+import { Checkbox, Divider, Input, Link, Loading, Text } from '@app/components/ui';
 import { Button } from '@app/components/ui/Button';
 import { useState } from 'react';
 import { Footer, Form, LoginContainer, PageWrapper, PictureContainer } from './LoginPage.styled';
@@ -11,12 +11,16 @@ export const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const { handleGoogleLogin } = useLogin();
+  const { handleGoogleLogin, loading } = useLogin();
 
   const handleSubmit = (e: React.SubmitEvent) => {
     e.preventDefault();
     console.log('Login', { email, password });
   };
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <PageWrapper>

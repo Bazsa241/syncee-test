@@ -6,16 +6,16 @@ import { getColor } from '@app/styles/utils';
 import { PageCenter } from './PageCenter';
 
 const PageWrapper = styled.div`
+  background: ${getColor('background')};
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  flex-grow: 1;
+  grid-template-columns: 1fr;
   margin: auto;
   max-width: 1600px;
-  flex-grow: 1;
-  background: ${getColor('surface')};
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
-    grid-template-columns: 1fr;
-    background: ${getColor('background')};
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    background: ${getColor('surface')};
+    grid-template-columns: 1fr 1fr;
   }
 `;
 
@@ -26,16 +26,28 @@ const FormContainer = styled.div`
   height: 100%;
   justify-content: center;
   margin: auto;
-  max-width: 1200px;
   gap: 1rem;
-  padding-top: 4rem;
-  padding-right: 2rem;
-  padding-bottom: 2rem;
-  padding-left: 2rem;
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    width: 400px;
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    padding-top: 4rem;
+    padding-bottom: 2rem;
+  }
 
   & h1,
   .subTitle {
     width: 100%;
+    text-align: center;
+
+    @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+      text-align: unset;
+    }
   }
 
   h1 {

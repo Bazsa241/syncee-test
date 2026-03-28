@@ -15,10 +15,10 @@ export const FormBeforeLogin = () => {
     <div>
       <h2>Form data received!</h2>
       <p>
-        <strong>Email:</strong> {formBeforeLogin.email}
+        <strong>Email:</strong> {formBeforeLogin.email || 'empty'}
       </p>
       <p>
-        <strong>Password:</strong> {formBeforeLogin.password}
+        <strong>Password:</strong> {formBeforeLogin.password || 'empty'}
       </p>
       <p>
         <strong>Remember me:</strong> {formBeforeLogin.remember ? 'Yes' : 'No'}

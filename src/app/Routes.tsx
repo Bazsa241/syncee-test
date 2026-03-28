@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { CurrenciesPage, HomePage, LoginPage, RegisterPage } from '@app/pages';
 import { AuthGuard, LoginGuard } from '@app/features/auth';
+import { Navigation } from '@app/features/navigation';
+import { AppLayout } from '@app/components/layout';
 
 export const AppRouter = () => (
   <BrowserRouter>
@@ -11,8 +13,10 @@ export const AppRouter = () => (
       </Route>
 
       <Route element={<AuthGuard />}>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/currencies" element={<CurrenciesPage />} />
+        <Route element={<AppLayout navbar={<Navigation />} />}>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/currencies" element={<CurrenciesPage />} />
+        </Route>
       </Route>
     </Routes>
   </BrowserRouter>

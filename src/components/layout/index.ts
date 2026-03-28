@@ -3,3 +3,4 @@ export { AuthPageLayout } from './AuthPageLayout';
 export { PageCenter } from './PageCenter';
 export { PageLoading } from './PageLoading';
 export { Center } from './Center';
+export { AppLayout } from './AppLayout';

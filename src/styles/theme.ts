@@ -29,4 +29,7 @@ export const theme = {
     tablet: '768px',
     mobile: '480px',
   },
+  layout: {
+    appWidth: '1400px',
+  },
 };

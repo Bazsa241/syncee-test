@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { CurrenciesPage, HomePage, LoginPage } from '@app/pages';
+import { CurrenciesPage, HomePage, LoginPage, RegisterPage } from '@app/pages';
 import { AuthGuard, LoginGuard } from '@app/features/auth';
 
 export const AppRouter = () => (
@@ -7,6 +7,7 @@ export const AppRouter = () => (
     <Routes>
       <Route element={<LoginGuard />}>
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
       </Route>
 
       <Route element={<AuthGuard />}>

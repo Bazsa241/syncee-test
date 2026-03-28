@@ -5,3 +5,5 @@ export { Checkbox } from './Checkbox';
 export { Link } from './Link';
 export { Text } from './Text';
 export { Loading } from './Loading';
+export { Form } from './Form';
+export { GoogleLoginButton } from './GoogleLoginButton';

@@ -1,7 +1,7 @@
 import { getColor } from '@app/styles/utils';
 import styled, { css } from 'styled-components';
 
-type TextVariant = 'subtitle' | 'helper' | 'footer';
+type TextVariant = 'subtitle' | 'helper' | 'footer' | 'error';
 
 interface TextProps {
   $variant?: TextVariant;
@@ -27,6 +27,11 @@ export const Text = styled.p<TextProps>`
         return css`
           font-size: 14px;
           color: ${theme.colors.textSecondary};
+        `;
+
+      case 'error':
+        return css`
+          color: ${theme.colors.error};
         `;
     }
   }}

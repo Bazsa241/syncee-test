@@ -48,6 +48,16 @@ const StyledButton = styled.button<StyledButtonProps>`
   padding: 1rem 1.5rem;
 
   ${({ $variant = 'primary' }) => variantStyles[$variant]}
+
+  &:disabled {
+    background: ${getColor('disabledBackground')};
+    color: ${getColor('disabledText')};
+    cursor: not-allowed;
+
+    &:hover {
+      background: ${getColor('disabledBackground')};
+    }
+  }
 `;
 
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {

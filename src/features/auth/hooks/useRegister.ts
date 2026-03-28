@@ -1,12 +1,16 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { loginWithEmail } from '../utils/authHelpers';
 import { FirebaseError } from 'firebase/app';
-import { setPersistence, browserLocalPersistence, browserSessionPersistence } from 'firebase/auth';
+import {
+  setPersistence,
+  browserLocalPersistence,
+  browserSessionPersistence,
+  createUserWithEmailAndPassword,
+} from 'firebase/auth';
 import { auth } from '@app/features/auth/api/firebase';
 import { useGoogleAuth } from './useGoogleAuth';
 
-export const useLogin = () => {
+export const useRegister = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -14,13 +18,17 @@ export const useLogin = () => {
 
   const navigate = useNavigate();
 
-  const handleEmailLogin = async (email: string, password: string, remember: boolean = false) => {
+  const handleEmailRegister = async (
+    email: string,
+    password: string,
+    remember: boolean = false,
+  ) => {
     setLoading(true);
     setError(null);
 
     try {
       await setPersistence(auth, remember ? browserLocalPersistence : browserSessionPersistence);
-      await loginWithEmail(email, password);
+      await createUserWithEmailAndPassword(auth, email, password);
       navigate('/');
     } catch (err) {
       const firebaseError = err as FirebaseError;
@@ -33,7 +41,7 @@ export const useLogin = () => {
   return {
     loading: loading || googleLoading,
     error: error || googleError,
-    handleEmailLogin,
-    handleGoogleLogin: handleGoogleAuth,
+    handleEmailRegister,
+    handleGoogleRegister: handleGoogleAuth,
   };
 };

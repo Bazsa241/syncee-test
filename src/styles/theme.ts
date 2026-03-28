@@ -14,8 +14,12 @@ export const theme = {
     textSecondary: '#6b7280',
 
     background: '#ffffff',
+    surface: '#f9fafb',
 
     divider: '#d1d5db',
+
+    disabledBackground: '#e5e7eb',
+    disabledText: '#9ca3af',
   },
   radius: {
     pill: '2rem',

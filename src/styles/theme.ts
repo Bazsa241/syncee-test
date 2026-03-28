@@ -24,4 +24,9 @@ export const theme = {
   radius: {
     pill: '2rem',
   },
+  breakpoints: {
+    desktop: '1024px',
+    tablet: '768px',
+    mobile: '480px',
+  },
 };

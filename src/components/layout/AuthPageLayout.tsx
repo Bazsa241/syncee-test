@@ -12,6 +12,11 @@ const PageWrapper = styled.div`
   max-width: 1600px;
   flex-grow: 1;
   background: ${getColor('surface')};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    grid-template-columns: 1fr;
+    background: ${getColor('background')};
+  }
 `;
 
 const FormContainer = styled.div`
@@ -48,7 +53,7 @@ const PictureContainer = styled.div`
 `;
 
 const Footer = styled.div`
-  padding-top: 10rem;
+  padding-top: 5rem;
   width: 100%;
 `;
 

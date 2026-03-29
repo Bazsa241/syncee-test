@@ -46,17 +46,13 @@ const TableContentRow = styled(TableRow)`
 `;
 
 export const Currencies = () => {
-  const { currencies, search, setSearch } = useCurrencies();
+  const { currencies, search, handleSearchChange } = useCurrencies();
 
   return (
     <Wrapper>
       <Header>
         <Title>Currencies</Title>
-        <SearchInput
-          placeholder="Search"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
+        <SearchInput placeholder="Search" value={search} onChange={handleSearchChange} />
       </Header>
       <div>
         <TableHeaderRow>

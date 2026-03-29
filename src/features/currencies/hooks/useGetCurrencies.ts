@@ -5,5 +5,5 @@ export const useGetCurrencies = () =>
   useQuery<Currency[]>({
     queryKey: ['currencies'],
     queryFn: getCurrencies,
-    staleTime: Infinity, // currencies list is static → no refetch needed
+    staleTime: Infinity, // currencies list is static, no refetch needed
   });

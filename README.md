@@ -108,5 +108,6 @@ pnpm format
 
 - Sorting for tables
 - Reusable data table component
+- Forgot password functionality
 - i18n support
 - Testing (Vitest / React Testing Library)

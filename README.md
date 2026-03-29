@@ -1,73 +1,112 @@
-# React + TypeScript + Vite
+# 🚀 Syncee Test Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern frontend application built with **Vite + React + TypeScript**, focusing on clean architecture, scalability, and developer experience.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🛠️ Tech Stack
 
-## React Compiler
+- ⚡ Vite – lightning-fast development environment
+- ⚛️ React 19
+- 🟦 TypeScript
+- 🎨 styled-components – component-based styling
+- 🔄 @tanstack/react-query – server state management
+- 🌐 axios – HTTP client
+- 🔐 firebase – authentication & backend services
+- 🧾 zod – schema validation
+- 🔔 notistack – toast notifications
+- 🧭 react-router-dom – routing
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 📦 Package Manager
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+This project uses **pnpm**.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+If you don't have it installed:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+```bash
+npm install -g pnpm
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x';
-import reactDom from 'eslint-plugin-react-dom';
+## 🚀 Getting Started
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+### 1. Install dependencies
+
+```bash
+pnpm install
 ```
+
+### 2. Start development server
+
+```bash
+pnpm dev
+```
+
+The app will be available at:
+
+```
+http://localhost:5173
+```
+
+---
+
+## 🏗️ Available Scripts
+
+| Command        | Description                   |
+| -------------- | ----------------------------- |
+| `pnpm dev`     | Start development server      |
+| `pnpm build`   | Type-check + production build |
+| `pnpm preview` | Preview production build      |
+| `pnpm lint`    | Run ESLint                    |
+| `pnpm format`  | Format code with Prettier     |
+
+---
+
+## 🔐 Authentication
+
+Firebase is used for authentication.
+For convenience, a fully working Firebase configuration is provided in `.env.example` specifically for this test project.
+Create a `.env` file based on it:
+
+```bash
+cp .env.example .env
+```
+
+---
+
+## 🧪 Code Quality
+
+- ESLint for linting
+- Prettier for formatting
+- Strict TypeScript setup
+
+Run manually:
+
+```bash
+pnpm lint
+pnpm format
+```
+
+---
+
+## 🧠 Architecture Notes
+
+- Feature-based structure for scalability
+- Separation of:
+  - UI (components)
+  - Business logic (hooks/services)
+  - Server state (react-query)
+- Reusable and typed API layer
+- Form validation with Zod
+
+---
+
+## ✨ Future Improvements
+
+- Sorting for tables
+- Reusable data table component
+- i18n support
+- Testing (Vitest / React Testing Library)

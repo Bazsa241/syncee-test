@@ -25,11 +25,19 @@ export const NavbarContainer = styled.nav`
   max-width: ${({ theme }) => theme.layout.appWidth};
   margin: auto;
   padding: 0 1rem;
+  position: relative;
+  height: 60px;
 `;
 
 export const NavLinks = styled.div`
   display: flex;
   gap: 1rem;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 `;
 
 export const StyledLink = styled(Link)<{ active: boolean }>`

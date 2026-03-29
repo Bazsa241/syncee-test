@@ -1,4 +1,3 @@
-import { Button } from '@app/components/ui';
 import { getColor } from '@app/styles/utils';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
@@ -51,9 +50,4 @@ export const StyledLink = styled(Link)<{ active: boolean }>`
   &:hover {
     color: ${getColor('primaryLight')};
   }
-`;
-
-export const Logout = styled(Button)`
-  padding: 0.5rem 1rem;
-  font-size: 14px;
 `;

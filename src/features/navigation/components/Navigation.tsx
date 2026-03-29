@@ -2,15 +2,9 @@ import { CompanyLogo } from '@app/components/layout/CompanyLogo';
 import { useAuth } from '@app/features/auth';
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import {
-  Logout,
-  LogoWrapper,
-  NavbarContainer,
-  NavLinks,
-  StyledLink,
-  Wrapper,
-} from './Navigation.styled';
+import { LogoWrapper, NavbarContainer, NavLinks, StyledLink, Wrapper } from './Navigation.styled';
 import { navigationConfig } from '../navigation.config';
+import { Button } from '@app/components/ui';
 
 export const Navigation: React.FC = () => {
   const location = useLocation();
@@ -29,7 +23,9 @@ export const Navigation: React.FC = () => {
             </StyledLink>
           ))}
         </NavLinks>
-        <Logout onClick={logout}>Logout</Logout>
+        <Button onClick={logout} size="sm">
+          Logout
+        </Button>
       </NavbarContainer>
     </Wrapper>
   );

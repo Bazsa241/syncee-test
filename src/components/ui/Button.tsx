@@ -2,6 +2,7 @@ import { getColor } from '@app/styles/utils';
 import styled, { css, type RuleSet } from 'styled-components';
 
 type Variant = 'primary' | 'secondary';
+type Size = 'sm' | 'lg';
 
 const variantStyles: Record<Variant, RuleSet<object>> = {
   primary: css`
@@ -33,8 +34,20 @@ const variantStyles: Record<Variant, RuleSet<object>> = {
   `,
 };
 
+const sizeStyles: Record<Size, RuleSet<object>> = {
+  sm: css`
+    font-size: 14px;
+    padding: 0.5rem 1rem;
+  `,
+  lg: css`
+    font-size: 16px;
+    padding: 1rem 1.5rem;
+  `,
+};
+
 type StyledButtonProps = {
   $variant?: Variant;
+  $size?: Size;
 };
 
 const StyledButton = styled.button<StyledButtonProps>`
@@ -42,12 +55,11 @@ const StyledButton = styled.button<StyledButtonProps>`
   border-radius: ${({ theme }) => theme.radius.pill};
   cursor: pointer;
   display: flex;
-  font-size: 16px;
   gap: 1rem;
   justify-content: center;
-  padding: 1rem 1.5rem;
 
   ${({ $variant = 'primary' }) => variantStyles[$variant]}
+  ${({ $size = 'lg' }) => sizeStyles[$size]}
 
   &:disabled {
     background: ${getColor('disabledBackground')};
@@ -63,11 +75,12 @@ const StyledButton = styled.button<StyledButtonProps>`
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: Variant;
   iconStart?: React.ReactNode;
+  size?: Size;
 };
 
-export const Button = ({ variant, iconStart, children, ...props }: ButtonProps) => {
+export const Button = ({ variant, iconStart, size, children, ...props }: ButtonProps) => {
   return (
-    <StyledButton $variant={variant} {...props}>
+    <StyledButton $variant={variant} $size={size} {...props}>
       {iconStart}
       {children}
     </StyledButton>

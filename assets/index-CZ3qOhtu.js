@@ -289,6 +289,7 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
 `,Rf=({currencies:e})=>{let{paginatedData:t,...n}=Iu(e);return(0,N.jsxs)(`div`,{children:[(0,N.jsxs)(Ff,{children:[(0,N.jsx)(`div`,{children:`Id`}),(0,N.jsx)(`div`,{children:`Name`}),(0,N.jsx)(`div`,{children:`Min size`})]}),t.map(({id:e,name:t,min_size:n})=>(0,N.jsxs)(If,{children:[(0,N.jsx)(`div`,{children:e}),(0,N.jsx)(`div`,{children:t}),(0,N.jsx)(`div`,{children:n})]},e)),(0,N.jsx)(Nf,{...n})]})},zf=M.div`
   max-width: ${({theme:e})=>e.layout.contentWidth};
   margin: auto;
+  padding-bottom: 2rem;
 `,Bf=M.div`
   display: flex;
   justify-content: space-between;

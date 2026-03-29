@@ -31,5 +31,6 @@ export const theme = {
   },
   layout: {
     appWidth: '1400px',
+    contentWidth: '800px',
   },
 };

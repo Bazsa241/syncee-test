@@ -1,4 +1,3 @@
-import { Input } from '@app/components/ui';
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
@@ -7,12 +6,13 @@ export const Wrapper = styled.div`
 `;
 
 export const Header = styled.div`
-  display: flex;
-  justify-content: space-between;
   margin-top: 2rem;
   margin-bottom: 2rem;
 `;
 
-export const SearchInput = styled(Input)`
-  border-radius: 1rem;
+export const Content = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  white-space: nowrap;
+  column-gap: 1rem;
 `;

@@ -1,28 +1,26 @@
 import { useFormBeforeLogin } from '@app/features/form-before-login';
+import { Content, Header, Wrapper } from './FormBeforeLogin.styled';
+import { PageTitle } from '@app/components/ui/PageTitle';
+import { Text } from '@app/components/ui';
 
 export const FormBeforeLogin = () => {
   const { formBeforeLogin } = useFormBeforeLogin();
 
-  if (!formBeforeLogin) {
-    return (
-      <div>
-        <h2>No form data available</h2>
-      </div>
-    );
-  }
-
   return (
-    <div>
-      <h2>Form data received!</h2>
-      <p>
-        <strong>Email:</strong> {formBeforeLogin.email || 'empty'}
-      </p>
-      <p>
-        <strong>Password:</strong> {formBeforeLogin.password || 'empty'}
-      </p>
-      <p>
-        <strong>Remember me:</strong> {formBeforeLogin.remember ? 'Yes' : 'No'}
-      </p>
-    </div>
+    <Wrapper>
+      <Header>
+        <PageTitle>Login form data</PageTitle>
+      </Header>
+
+      {formBeforeLogin && (
+        <Content>
+          <strong>Email:</strong> <p>{formBeforeLogin.email || 'empty'}</p>
+          <strong>Password:</strong> <p>{formBeforeLogin.password || 'empty'}</p>
+          <strong>Remember me:</strong> <p>{formBeforeLogin.remember ? 'Yes' : 'No'}</p>
+        </Content>
+      )}
+
+      {!formBeforeLogin && <Text>No form data available</Text>}
+    </Wrapper>
   );
 };

@@ -1,8 +1,9 @@
 import { Spinner } from '@app/components/ui';
 import { useCurrencies } from '../hooks/useCurrencies';
 import { CurrenciesTable } from './CurrenciesTable';
-import { Header, SearchInput, Title, Wrapper } from './Currencies.styled';
+import { Header, SearchInput, Wrapper } from './Currencies.styled';
 import { SpinnerContainer } from './CurrenciesTable.styled.';
+import { PageTitle } from '@app/components/ui/PageTitle';
 
 export const Currencies = () => {
   const { currencies, search, handleSearchChange, isLoading } = useCurrencies();
@@ -10,7 +11,7 @@ export const Currencies = () => {
   return (
     <Wrapper>
       <Header>
-        <Title>Currencies</Title>
+        <PageTitle>Currencies</PageTitle>
         <SearchInput placeholder="Search" value={search} onChange={handleSearchChange} />
       </Header>
 

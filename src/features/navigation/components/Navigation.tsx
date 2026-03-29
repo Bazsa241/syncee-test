@@ -24,7 +24,7 @@ export const Navigation: React.FC = () => {
         </LogoWrapper>
         <NavLinks>
           {navigationConfig.map(({ path, label }) => (
-            <StyledLink to={path} active={location.pathname === path}>
+            <StyledLink key={path} to={path} active={location.pathname === path}>
               {label}
             </StyledLink>
           ))}

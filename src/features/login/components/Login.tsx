@@ -5,7 +5,7 @@ import { GoogleLoginButton } from '@app/components/ui';
 import { useLoginForm } from '../hooks/useLoginForm';
 
 export const Login = () => {
-  const { formState, setField, fieldErrors, error, handleGoogleLogin, handleSubmit, loading } =
+  const { formState, setField, fieldErrors, handleGoogleLogin, handleSubmit, loading } =
     useLoginForm();
 
   return (
@@ -48,7 +48,6 @@ export const Login = () => {
         <Text $variant="helper">Not registered yet?</Text>
         <Link to="/register">Create an Account</Link>
       </Row>
-      {error && <Text $variant="error">{error}</Text>}
     </Form>
   );
 };

@@ -13,7 +13,7 @@ export const useRegisterForm = () => {
     setFormState((prev) => ({ ...prev, [field]: value }));
   };
 
-  const { handleEmailRegister, handleGoogleRegister, loading, error } = useRegister();
+  const { handleEmailRegister, handleGoogleRegister, loading } = useRegister();
 
   const handleSubmit = (e: React.SubmitEvent) => {
     e.preventDefault();
@@ -42,7 +42,6 @@ export const useRegisterForm = () => {
     setField,
     handleGoogleRegister,
     loading,
-    error,
     fieldErrors,
   };
 };

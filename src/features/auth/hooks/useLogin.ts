@@ -5,23 +5,24 @@ import { setPersistence, browserLocalPersistence, browserSessionPersistence } fr
 import { auth } from '@app/features/auth/api/firebase';
 import { useGoogleAuth } from './useGoogleAuth';
 import type { LoginInput } from '@app/entities/auth';
+import { useAuthErrorToast } from './useAuthErrorToast';
 
 export const useLogin = () => {
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
 
-  const { loading: googleLoading, error: googleError, handleGoogleAuth } = useGoogleAuth();
+  const { setAuthToastError } = useAuthErrorToast();
+
+  const { loading: googleLoading, handleGoogleAuth } = useGoogleAuth();
 
   const handleEmailLogin = async ({ email, password, remember = false }: LoginInput) => {
     setLoading(true);
-    setError(null);
 
     try {
       await setPersistence(auth, remember ? browserLocalPersistence : browserSessionPersistence);
       await loginWithEmail(email, password);
     } catch (err) {
       const firebaseError = err as FirebaseError;
-      setError(firebaseError.message || 'Login failed');
+      setAuthToastError(firebaseError.message);
     } finally {
       setLoading(false);
     }
@@ -29,7 +30,6 @@ export const useLogin = () => {
 
   return {
     loading: loading || googleLoading,
-    error: error || googleError,
     handleEmailLogin,
     handleGoogleLogin: handleGoogleAuth,
   };

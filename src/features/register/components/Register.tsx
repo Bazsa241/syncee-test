@@ -7,7 +7,7 @@ import { useRegisterForm } from '../hooks/useRegisterForm';
 
 export const Register = () => {
   const [acceptTerms, setAcceptTerms] = useState(false);
-  const { error, fieldErrors, formState, handleGoogleRegister, handleSubmit, loading, setField } =
+  const { fieldErrors, formState, handleGoogleRegister, handleSubmit, loading, setField } =
     useRegisterForm();
 
   return (
@@ -63,7 +63,6 @@ export const Register = () => {
         <Text $variant="helper">Already have an account?</Text>
         <Link to="/login">Login</Link>
       </Row>
-      {error && <Text $variant="error">{error}</Text>}
     </Form>
   );
 };

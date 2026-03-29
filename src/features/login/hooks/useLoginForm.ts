@@ -16,7 +16,7 @@ export const useLoginForm = () => {
     setFormState((prev) => ({ ...prev, [field]: value }));
   };
 
-  const { handleEmailLogin, handleGoogleLogin: loginWithGoogle, loading, error } = useLogin();
+  const { handleEmailLogin, handleGoogleLogin: loginWithGoogle, loading } = useLogin();
 
   const handleSubmit = (e: React.SubmitEvent) => {
     e.preventDefault();
@@ -50,7 +50,6 @@ export const useLoginForm = () => {
     setField,
     handleGoogleLogin,
     loading,
-    error,
     fieldErrors,
   };
 };

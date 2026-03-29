@@ -23,6 +23,10 @@ const StyledInput = styled.input<ErrorProp>`
   &:focus-visible {
     border-color: ${getColor('borderFocus')};
   }
+
+  &:active {
+    border-color: ${getColor('borderFocus')};
+  }
 `;
 
 const Label = styled.label`
@@ -30,15 +34,14 @@ const Label = styled.label`
   font-size: 14px;
 `;
 
-const Error = styled.small<ErrorProp>`
-  color: #da4343;
+const Error = styled.small`
+  color: ${getColor('error')};
   display: block;
   font-size: 12px;
-  visibility: ${({ $error }) => ($error ? 'visible' : 'hidden')};
 `;
 
 type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
-  label: string;
+  label?: string;
   error?: string;
 };
 
@@ -49,9 +52,9 @@ export const Input = ({ label, error, name, id, ...props }: InputProps) => {
 
   return (
     <div>
-      <Label htmlFor={inputId}>{label}</Label>
+      {label && <Label htmlFor={inputId}>{label}</Label>}
       <StyledInput $error={hasError} id={inputId} name={name || label?.toLowerCase()} {...props} />
-      <Error $error={hasError}>{error}</Error>
+      <Error>{error}</Error>
     </div>
   );
 };

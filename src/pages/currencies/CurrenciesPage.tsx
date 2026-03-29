@@ -1,3 +1,5 @@
+import { Currencies } from '@app/features/currencies';
+
 export const CurrenciesPage = () => {
-  return <h1>CurrenciesPage</h1>;
+  return <Currencies />;
 };

@@ -1,7 +1,12 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 export const usePagination = <T>(data: T[], pageSize = 20) => {
   const [page, setPage] = useState(0);
+
+  useEffect(() => {
+    const id = setTimeout(() => setPage(0), 0);
+    return () => clearTimeout(id);
+  }, [data]);
 
   const paginatedData = useMemo(() => {
     const start = page * pageSize;

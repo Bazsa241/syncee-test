@@ -1,11 +1,12 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { CurrenciesPage, HomePage, LoginPage, RegisterPage } from '@app/pages';
 import { AuthGuard, LoginGuard } from '@app/features/auth';
 import { Navigation } from '@app/features/navigation';
 import { AppLayout } from '@app/components/layout';
+import { HashRouter } from 'react-router-dom';
 
 export const AppRouter = () => (
-  <BrowserRouter>
+  <HashRouter>
     <Routes>
       <Route element={<LoginGuard />}>
         <Route path="/login" element={<LoginPage />} />
@@ -19,5 +20,5 @@ export const AppRouter = () => (
         </Route>
       </Route>
     </Routes>
-  </BrowserRouter>
+  </HashRouter>
 );
